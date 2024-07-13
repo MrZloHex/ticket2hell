@@ -7,7 +7,8 @@
 
 const static size_t k_train_color_quantity = 12;
 const static size_t k_locomotive_quantity = 14;
-const static size_t k_pool_size = 5;
+
+#define POOL_SIZE 5
 
 typedef struct Train_Deck_S
 {
@@ -15,7 +16,7 @@ typedef struct Train_Deck_S
     size_t locomotives;
     size_t q_cards;
 
-    Color pool[k_pool_size];
+    Color pool[POOL_SIZE];
 } Train_Deck;
 
 void

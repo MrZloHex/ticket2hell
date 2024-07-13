@@ -28,7 +28,7 @@ bool
 game_update(Game *game);
 
 void
-game_draw_train_card(Game *game, Color clr);
+game_claim_route(Game *game, Route route);
 
 void
 game_execute_action(Game *game, Action act);

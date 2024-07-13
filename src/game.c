@@ -14,6 +14,11 @@ game_update(Game *game)
     return true;
 }
 
+void
+game_claim_route(Game *game, Route route)
+{
+
+}
 
 void
 game_execute_action(Game *game, Action act)
@@ -25,11 +30,11 @@ game_execute_action(Game *game, Action act)
             break;
         
         case ACT_DRAW_TICKET:
-            game_draw_ticket_card(game, act.params.route);
+            route_deck_draw_card(game, act.params.route);
             break;
 
         case ACT_CLAIM_ROUTE:
-            game_clain_route(game, act.params.route, act.params.route);
+            game_claim_route(game, act.params.route);
             break;
     }
 }

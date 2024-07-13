@@ -166,7 +166,7 @@ typedef struct
 } Route_Card;
 
 const static size_t k_route_cards = 30;
-const static Route_Card route_cards[k_route_cards] =
+const static Route_Card route_cards[] =
 {
     { .city1 = CITY_SEATTLE,        .city2 = CITY_LOS_ANGELOS,  .points = 9 },
     { .city1 = CITY_CHICAGO,        .city2 = CITY_LOS_ANGELOS,  .points = 16 },
@@ -211,6 +211,6 @@ void
 route_deck_init(Route_Deck *deck);
 
 void
-route_deck_draw_card(Route_Deck *deck, City city1, City city2);
+route_deck_draw_card(Route_Deck *deck, Route route);
 
 #endif /* __ROUTES_H__ */

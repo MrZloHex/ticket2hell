@@ -8,12 +8,12 @@ route_deck_init(Route_Deck *deck)
 }
 
 void
-route_deck_draw_card(Route_Deck *deck, City city1, City city2)
+route_deck_draw_card(Route_Deck *deck, Route route)
 {
     for (size_t i = 0; i < deck->q_cards; ++i)
     {
         Route_Card card = deck->cards[i];
-        if (card.city1 == city1 && card.city2 == city2)
+        if (card.city1 == route.city1 && card.city2 == route.city2)
         {
             if (card.points == 0)
             { exit(1); }
