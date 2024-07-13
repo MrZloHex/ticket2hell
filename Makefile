@@ -22,7 +22,10 @@ TESTS = $(wildcard $(TST)/*.s)
 TEST_RES = $(patsubst $(TST)/%.s, $(BIN)/%.bin, $(TESTS))
 TEST_CHK = $(wildcard $(TST)/*.bin)
 
-all: clean compile test
+all: clean compile run
+
+run: clean compile
+	./$(BIN)/$(TARGET)
 
 compile: clean binary
 test: compile tests
