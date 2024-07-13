@@ -1,11 +1,26 @@
 #ifndef __ACTIONS_H__
 #define __ACTIONS_H__
 
-typedef enum Action_E
+#include "colors.h"
+#include "routes.h"
+
+typedef enum Action_Type_E
 {
     ACT_DRAW_TRAIN,
     ACT_DRAW_TICKET,
     ACT_CLAIN_ROUTE
+} Action_Type;
+
+typedef union
+{
+    Color color;
+    Route route;
+} Action_Params;
+
+typedef struct Action_S
+{
+    Action_Type type;
+    Action_Params params;
 } Action;
 
 
