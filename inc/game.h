@@ -5,7 +5,6 @@
 #include "trains.h"
 #include "routes.h"
 
-
 typedef struct Game_S
 {
     Map map;
