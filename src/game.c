@@ -14,11 +14,6 @@ game_update(Game *game)
     return true;
 }
 
-void
-game_draw_train_card(Game *game, Color clr)
-{
-    train_deck_draw_card()
-}
 
 void
 game_execute_action(Game *game, Action act)
@@ -26,15 +21,15 @@ game_execute_action(Game *game, Action act)
     switch (act.type)
     {
         case ACT_DRAW_TRAIN:
-            game_draw_train_card(game, act.params.color);
+            train_deck_draw_card(&(game->trains), act.params.color);
             break;
         
-        case ACT_CLAIM_ROUTE:
-            game_clain_route(game, act.params.route, act.params.route);
-            break;
-
         case ACT_DRAW_TICKET:
             game_draw_ticket_card(game, act.params.route);
+            break;
+
+        case ACT_CLAIM_ROUTE:
+            game_clain_route(game, act.params.route, act.params.route);
             break;
     }
 }

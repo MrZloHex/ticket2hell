@@ -42,7 +42,8 @@ typedef enum City_E
     CITY_SAINT_LOUIS,
     CITY_NASHVILLE,
     CITY_ATLANTA,
-    CITY_QUANTITY
+    CITY_QUANTITY,
+    CITY_UNKNOWN
 } City;
 
 typedef struct Route_S
@@ -157,9 +158,59 @@ const static Route k_routes[] =
 };
 
 
+typedef struct
+{
+    City city1;
+    City city2;
+    size_t points;
+} Route_Card;
+
+const static size_t k_route_cards = 30;
+const static Route_Card route_cards[k_route_cards] =
+{
+    { .city1 = CITY_SEATTLE,        .city2 = CITY_LOS_ANGELOS,  .points = 9 },
+    { .city1 = CITY_CHICAGO,        .city2 = CITY_LOS_ANGELOS,  .points = 16 },
+    { .city1 = CITY_PORTLAND,       .city2 = CITY_NASHVILLE,    .points = 17 },
+    { .city1 = CITY_WINNIPEG,       .city2 = CITY_LITTLE_ROCK,  .points = 11 },
+    { .city1 = CITY_DULUTH,         .city2 = CITY_HOUSTON,      .points = 8 },
+    { .city1 = CITY_SAULT_ST_MARIE, .city2 = CITY_OKLAHOMA,     .points = 9 },
+    { .city1 = CITY_NEW_YORK,       .city2 = CITY_ATLANTA,      .points = 6 },
+    { .city1 = CITY_WANCOUVER,      .city2 = CITY_SANTA_FE,     .points = 13 },
+    { .city1 = CITY_NEW_YORK,       .city2 = CITY_LOS_ANGELOS,  .points = 21 },
+    { .city1 = CITY_DENVER,         .city2 = CITY_PITTSBURGH,   .points = 11 },
+    { .city1 = CITY_TORONTO,        .city2 = CITY_MIAMI,        .points = 10 },
+    { .city1 = CITY_SAN_FRANCISCO,  .city2 = CITY_ATLANTA,      .points = 17 },
+    { .city1 = CITY_CALGARY,        .city2 = CITY_PHOENIX,      .points = 13 },
+    { .city1 = CITY_HELENA,         .city2 = CITY_LOS_ANGELOS,  .points = 8 },
+    { .city1 = CITY_LOS_ANGELOS,    .city2 = CITY_MIAMI,        .points = 20 },
+    { .city1 = CITY_WINNIPEG,       .city2 = CITY_HOUSTON,      .points = 12 },
+    { .city1 = CITY_CALGARY,        .city2 = CITY_SALT_LAKE,    .points = 7 },
+    { .city1 = CITY_PORTLAND,       .city2 = CITY_PHOENIX,      .points = 11 },
+    { .city1 = CITY_BOSTON,         .city2 = CITY_MIAMI,        .points = 12 },
+    { .city1 = CITY_CHICAGO,        .city2 = CITY_NEW_ORLEANS,  .points = 7 },
+    { .city1 = CITY_MONTREAL,       .city2 = CITY_ATLANTA,      .points = 9 },
+    { .city1 = CITY_MONTREAL,       .city2 = CITY_NEW_ORLEANS,  .points = 13 },
+    { .city1 = CITY_SAULT_ST_MARIE, .city2 = CITY_NASHVILLE,    .points = 8 },
+    { .city1 = CITY_HOUSTON,        .city2 = CITY_KANSAS,       .points = 5 },
+    { .city1 = CITY_DALLAS,         .city2 = CITY_NEW_YORK,     .points = 11 },
+    { .city1 = CITY_SEATTLE,        .city2 = CITY_NEW_YORK,     .points = 22 },
+    { .city1 = CITY_EL_PASO,        .city2 = CITY_DENVER,       .points = 4 },
+    { .city1 = CITY_CHICAGO,        .city2 = CITY_SANTA_FE,     .points = 9 },
+    { .city1 = CITY_WANCOUVER,      .city2 = CITY_MONTREAL,     .points = 20 },
+    { .city1 = CITY_DULUTH,         .city2 = CITY_EL_PASO,      .points = 10 },
+};
+
+
 typedef struct Route_Deck_S
 {
-    size_t cards;
+    Route_Card *cards;
+    size_t q_cards;
 } Route_Deck;
+
+void
+route_deck_init(Route_Deck *deck);
+
+void
+route_deck_draw_card(Route_Deck *deck, City city1, City city2);
 
 #endif /* __ROUTES_H__ */

@@ -13,8 +13,7 @@ typedef struct Game_S
 {
     Map map;
     Train_Deck trains;
-    
-    Route_Deck routs;
+    Route_Deck routes;
 
     bool game_started;
 
