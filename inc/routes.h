@@ -154,7 +154,6 @@ const static Route k_routes[] =
   { .city1 = CITY_ATLANTA,        .city2 = CITY_NEW_ORLEANS,    .color = COLOR_YELLOW },
   { .city1 = CITY_ATLANTA,        .city2 = CITY_NEW_ORLEANS,    .color = COLOR_ORANGE },
   { .city1 = CITY_ATLANTA,        .city2 = CITY_MIAMI,          .color = COLOR_BLUE },
-
 };
 
 
