@@ -3,6 +3,8 @@
 
 #include "actions.h"
 #include "parser.h"
+#include "game.h"
+
 
 typedef struct Controller_S
 {
@@ -13,7 +15,7 @@ void
 ctrl_init(Controller *ctrl);
 
 void
-ctrl_update(Controller *ctrl);
+ctrl_update(Controller *ctrl, Game *game);
 
 void
 ctrl_deinit(Controller *ctrl);
