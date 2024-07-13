@@ -16,6 +16,7 @@ main(void)
     bool stop = false;
     while (!stop)
     {
+        ctrl_update(&ctrl);
         stop = game_update(&game);
     }
 
