@@ -1,0 +1,3 @@
+.vscode/
+bin/ticket2hell
+obj/*.o
