@@ -1,11 +1,15 @@
 #include "stdio.h"
 #include "game.h"
+#include "controller.h"
 
 int
 main(void)
 {
     Game game;
+    Controller ctrl;
+
     game_init(&game, 2);
+    ctrl_init(&ctrl);
 
     printf("TICKET TO HELL!!!!\n");
 
@@ -16,5 +20,6 @@ main(void)
     }
 
     game_deinit(&game);
+    ctrl_deinit(&ctrl);
     return 0;
 }
