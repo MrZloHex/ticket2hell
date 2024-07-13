@@ -5,7 +5,7 @@ int
 main(void)
 {
     Game game;
-    game_init(&game);
+    game_init(&game, 2);
 
     printf("TICKET TO HELL!!!!\n");
 

@@ -4,6 +4,8 @@
 #include "map.h"
 #include "trains.h"
 #include "routes.h"
+#include "players.h"
+
 #include "stdbool.h"
 
 typedef struct Game_S
@@ -11,10 +13,15 @@ typedef struct Game_S
     Map map;
     Train_Deck trains;
     Route_Deck routs;
+
+    bool game_started;
+
+    Controller_Players ctrl_players;
 } Game;
 
+
 void
-game_init(Game *game);
+game_init(Game *game, size_t q_players);
 
 bool
 game_update(Game *game);
