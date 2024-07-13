@@ -40,7 +40,7 @@ ctrl_players_set_first(Controller_Players *ctrl, char *name)
         if (strcmp(name, ctrl->players[i].name) == 0)
         {
             ctrl->curr_player = i; 
-            break;
+            return;
         }
     }
     exit(1);
