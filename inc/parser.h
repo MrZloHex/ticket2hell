@@ -4,17 +4,19 @@
 #include "colors.h"
 #include "routes.h"
 #include "result.h"
-typedef struct CMD_E
+
+
+typedef struct CMD_S
 {
     /* data */
 }CMD;
 
-typedef  struct Parser_E
+typedef struct Parser_S
 {
     CMD cmd;
     Color color;
     City city[2];
-}Parser;
+} CMD_PARSED;
 
 const static struct {
     CMD      val;
@@ -84,5 +86,19 @@ const static struct {
 };
 
 
-Parser
-f_Parset(char* s);
+typedef struct Parser_S
+{
+
+} Parser;
+
+void
+parser_init(Parser *parser);
+
+CMD_PARSED
+parser_parse(Parser *parser, char *str);
+
+void
+parser_deinit(Parser *parser);
+
+
+#endif /* __PARSER_H__ */

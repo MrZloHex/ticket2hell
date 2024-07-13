@@ -1,10 +1,13 @@
 #include "parser.h"
 #include <string.h>
-Parser
-f_Parset(char *s)
+
+
+
+CMD_PARSED
+parser_parse(Parser *parser, char *s)
 {
-    Parser res;
-    char *pch = strtok (s," ");
+    CMD_PARSED res;
+    char *pch = strtok(s, " ");
     
     while (pch != NULL)                        
     {
