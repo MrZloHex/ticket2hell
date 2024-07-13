@@ -12,7 +12,8 @@ typedef enum Color_E
     COLOR_RED,
     COLOR_GREEN,
     COLORS_QUANTITY,
-    COLOR_ANY
+    COLOR_ANY,
+    COLOR_UNKNOWN       // FOR TRAIN CARDS DRAWED IN CLOSED
 } Color;
 
 #endif /* __COLORS_H__ */

@@ -8,7 +8,8 @@ typedef enum Action_Type_E
 {
     ACT_DRAW_TRAIN,
     ACT_DRAW_TICKET,
-    ACT_CLAIN_ROUTE
+    ACT_CLAIM_ROUTE,
+    ACT_UPDATE_POOL
 } Action_Type;
 
 typedef union
