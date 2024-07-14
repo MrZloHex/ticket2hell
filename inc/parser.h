@@ -16,8 +16,8 @@ const static struct {
     CMD_Type    val;
     const char *str;
 } conversion_cmd [] = {
-    {CMD_ADD_PLAYER, "add player"},
-    {CMD_SET_FIRST, "set first"},
+    { CMD_ADD_PLAYER, "add player" },
+    { CMD_SET_FIRST,  "set first"  },
 };
 const static size_t cmd_quantity = sizeof(conversion_cmd) / sizeof(conversion_cmd[0]);
 
@@ -25,90 +25,97 @@ const static struct {
     Action_Type val;
     const char *str;
 } conversion_actions [] = {
-    {ACT_DRAW_TRAIN, "train"},
-    {ACT_DRAW_TICKET, "ticket"},
-    {ACT_CLAIN_ROUTE, "claim"},
+    { ACT_DRAW_TRAIN,  "train"  },
+    { ACT_DRAW_TICKET, "ticket" },
+    { ACT_CLAIN_ROUTE, "claim"  },
 };
+const static size_t actions_quantity = sizeof(conversion_actions) / sizeof(conversion_actions[0]);
 
 const static struct {
     Color      val;
     const char *str;
 } conversion_color [] = {
-    {COLOR_ROSE, "ROSE"},
-    {COLOR_WHITE, "WHITE"},
-    {COLOR_BLUE, "BLUE"},
-    {COLOR_YELLOW, "YELLOW"},
-    {COLOR_ORANGE, "ORANGE"},
-    {COLOR_BLACK, "BLACK"},
-    {COLOR_RED, "RED"},
-    {COLOR_GREEN, "GREEN"},
-    {COLORS_QUANTITY, "QUANTITY"},
-    {COLOR_ANY, "ANY"},
+    { COLOR_ROSE,   "rose"    },
+    { COLOR_WHITE,  "white"   },
+    { COLOR_BLUE,   "vlue"    },
+    { COLOR_YELLOW, "yellow"  },
+    { COLOR_ORANGE, "ORANGE"  },
+    { COLOR_BLACK,  "BLACK"   },
+    { COLOR_RED,    "RED"     },
+    { COLOR_GREEN,  "GREEN"   },
+    { COLOR_ANY,    "ANY"     },
 };
+const static size_t color_quantity = sizeof(conversion_color) / sizeof(conversion_color[0]);
 
 const static struct {
     City      val;
     const char *str;
 } conversion_city [] = {
-    {CITY_WANCOUVER, "ANY"},
-    {CITY_SEATTLE, "CITY_SEATTLE"},
-    {CITY_PORTLAND, "CITY_PORTLAND"},
-    {CITY_SAN_FRANCISCO, "CITY_SAN_FRANCISCO"},
-    {CITY_LOS_ANGELOS, "CITY_LOS_ANGELOS"},
-    {CITY_EL_PASO, "CITY_EL_PASO"},
-    {CITY_HOUSTON, "CITY_HOUSTON"},
-    {CITY_NEW_ORLEANS, "CITY_NEW_ORLEANS"},
-    {CITY_MIAMI, "CITY_MIAMI"},
-    {CITY_CHARLESTON, "CITY_CHARLESTON"},
-    {CITY_RALIEGH, "CITY_RALIEGH"},
-    {CITY_WASHINGTON, "CITY_WASHINGTON"},
-    {CITY_NEW_YORK, "CITY_NEW_YORK"},
-    {CITY_BOSTON, "CITY_BOSTON"},
-    {CITY_MONTREAL, "CITY_MONTREAL"},
-    {CITY_SAULT_ST_MARIE, "CITY_SAULT_ST_MARIE"},
-    {CITY_WINNIPEG, "CITY_WINNIPEG"},
-    {CITY_CALGARY, "CITY_CALGARY"},
-    {CITY_HELENA, "CITY_HELENA"},
-    {CITY_DULUTH, "CITY_DULUTH"},
-    {CITY_TORONTO, "CITY_TORONTO"},
-    {CITY_PITTSBURGH, "CITY_PITTSBURGH"},
-    {CITY_CHICAGO, "CITY_CHICAGO"},
-    {CITY_OMAHA, "CITY_OMAHA"},
-    {CITY_DENVER, "CITY_DENVER"},
-    {CITY_SALT_LAKE, "CITY_SALT_LAKE"},
-    {CITY_LAS_VEGAS, "CITY_LAS_VEGAS"},
-    {CITY_PHOENIX, "CITY_PHOENIX"},
-    {CITY_SANTA_FE, "CITY_SANTA_FE"},
-    {CITY_OKLAHOMA, "CITY_OKLAHOMA"},
-    {CITY_DALLAS, "CITY_DALLAS"},
-    {CITY_KANSAS, "CITY_KANSAS"},
-    {CITY_LITTLE_ROCK, "CITY_LITTLE_ROCK"},
-    {CITY_SAINT_LOUIS, "CITY_SAINT_LOUIS"},
-    {CITY_NASHVILLE, "CITY_NASHVILLE"},
-    {CITY_ATLANTA, "CITY_ATLANTA"},
-    {CITY_QUANTITY, "CITY_QUANTITY"},
+    { CITY_SEATTLE,        "Seattle"        },
+    { CITY_PORTLAND,       "Portland"       },
+    { CITY_SAN_FRANCISCO,  "San_Francisco"  },
+    { CITY_LOS_ANGELOS,    "Los_Angelos"    },
+    { CITY_EL_PASO,        "El_Paso"        },
+    { CITY_HOUSTON,        "Houston"        },
+    { CITY_NEW_ORLEANS,    "New_Orleans"    },
+    { CITY_MIAMI,          "Miani"          },
+    { CITY_CHARLESTON,     "Charleston"     },
+    { CITY_RALIEGH,        "Raliegh"        },
+    { CITY_WASHINGTON,     "Washington"     },
+    { CITY_NEW_YORK,       "New_York"       },
+    { CITY_BOSTON,         "Boston"         },
+    { CITY_MONTREAL,       "Montreal"       },
+    { CITY_SAULT_ST_MARIE, "Sault_St_Marie" },
+    { CITY_WINNIPEG,       "Winnipeg"       },
+    { CITY_CALGARY,        "Calgary"        },
+    { CITY_HELENA,         "Helena"         },
+    { CITY_DULUTH,         "Duluth"         },
+    { CITY_TORONTO,        "Toronto"        },
+    { CITY_PITTSBURGH,     "Pittsburgh"     },
+    { CITY_CHICAGO,        "Chicago"        },
+    { CITY_OMAHA,          "Omaha"          },
+    { CITY_DENVER,         "Denver"         },
+    { CITY_SALT_LAKE,      "Salt_Lake"      },
+    { CITY_LAS_VEGAS,      "Las_Vegas"      },
+    { CITY_PHOENIX,        "Phoenix"        },
+    { CITY_SANTA_FE,       "Santa_Fe"       },
+    { CITY_OKLAHOMA,       "Oklahoma"       },
+    { CITY_DALLAS,         "Dallas"         },
+    { CITY_KANSAS,         "Kansas"         },
+    { CITY_LITTLE_ROCK,    "Little_Rock"    },
+    { CITY_SAINT_LOUIS,    "Saint_Louis"    },
+    { CITY_NASHVILLE,      "Nashville"      },
+    { CITY_ATLANTA,        "Aylanta"        },
+    { CITY_QUANTITY,       "Quantity"       },
 
 };
+const static size_t city_quantity = sizeof(conversion_city) / sizeof(conversion_city[0]);
 
 DEFINE_OPTION(Command, Command_OPT);
 DEFINE_OPTION(CMD_Type, CMD_OPT);
 DEFINE_OPTION(Color, Color_OPT);
+DEFINE_OPTION(Action_Type, ACTION_OPT);
+DEFINE_OPTION(City, CITY_OPT);
 
 Command_OPT
 parse(char* s);
 
 Color_OPT
-str2Color(const char *str);
+str2color(const char *str);
 
 
 CMD_OPT
 str2cmd(const char *str);
 
-DEFINE_OPTION(Action_Type, ACTION_OPT);
 ACTION_OPT
-str2Actions(const char *str);
+str2action(const char *str);
 
-DEFINE_OPTION(City, CITY_OPT);
 CITY_OPT
-str2City(const char *str);
+str2city(const char *str);
+
+char*
+concat(const char *s1, const char *s2, const char c);
+
+CITY_OPT
+find_city(char** arr, size_t* i, size_t* size);
 #endif  /* __PARSER_H__ */ 
