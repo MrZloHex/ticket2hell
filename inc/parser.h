@@ -7,10 +7,17 @@
 #include "colors.h"
 #include "routes.h"
 #include "result.h"
-#include "command.h"
-#include "actions.h"
+typedef struct CMD_E
+{
+    /* data */
+}CMD;
 
-
+typedef  struct Parser_E
+{
+    CMD cmd;
+    Color color;
+    City city[2];
+}Parser;
 
 const static struct {
     CMD_Type    val;
@@ -90,24 +97,6 @@ const static struct {
 
 };
 
-DEFINE_OPTION(Command, Command_OPT);
-Command_OPT
-Parser(char* s);
 
-DEFINE_OPTION(Color, Color_OPT);
-Color_OPT
-str2Color (const char *str);
-
-
-DEFINE_OPTION(CMD_Type, CMD_OPT);
-CMD_OPT
-str2CMD (const char *str);
-
-DEFINE_OPTION(Action_Type, ACTION_OPT);
-ACTION_OPT
-str2Actions (const char *str);
-
-DEFINE_OPTION(City, CITY_OPT);
-CITY_OPT
-str2City (const char *str);
-#endif  /* __PARSER_H__ */ 
+Parser
+f_Parset(char* s);

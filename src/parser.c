@@ -1,12 +1,12 @@
 #include "parser.h"
-
-Command_OPT
-Parser(char *s)
+#include <string.h>
+Parser
+f_Parset(char *s)
 {
-
-    Command_OPT res = { .success = true };
+    Parser res;
     char *pch = strtok (s," ");
-    if(str2CMD(pch).success)
+    
+    while (pch != NULL)                        
     {
         res.value.type = str2CMD(pch).value;
         pch = strtok (NULL, " ");
