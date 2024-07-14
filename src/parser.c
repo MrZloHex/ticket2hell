@@ -9,65 +9,82 @@ parse(char *s)
     char* tocen = strtok(s, " ");
     while (tocen != NULL)
     {
-        if(i == 7)
+        if (i == 7)
         { break; }
-        if(strlen(tocen) != 0)
+        if (strlen(tocen) != 0)
         {
-            tocens[i] = tocen;
+            tocens[i] = malloc(strlen(tocen) + 1);
+            memcpy(tocens[i], tocen, strlen(tocen));
             ++i;
         }
         tocen = strtok(NULL, " ");
     }
-    if(i <= 1)
+    if (i <= 1)
     {
+        for(int t = 0; t < i; ++t)
+        { free(tocens[t]); }
         res.success = false;
         return res;
     }
     ACTION_OPT action = str2action(tocens[0]);
-    if(action.success == true)
+    if (action.success == true)
     {
-        if(action.value == ACT_DRAW_TRAIN)
+        if (action.value == ACT_DRAW_TRAIN)
         {
-            if(i != 2)
+            if (i != 2)
             {
+                for(int t = 0; t < i; ++t)
+                { free(tocens[t]); }
                 res.success = false;
                 return res;
             }
             res.value.params.act.type = ACT_DRAW_TRAIN;
             
             Color_OPT color = str2color(tocens[1]);
-            if(color.success == true)
+            if (color.success == true)
             { res.value.params.act.params.color = color.value; }
             else
             {
+                for(int t = 0; t < i; ++t)
+                { free(tocens[t]); }
                 res.success = false;
                 return res;
             }
+            for(int t = 0; t < i; ++t)
+            { free(tocens[t]); }
+                
             return res;
         }
-        else if(action.value == ACT_DRAW_TICKET)
+        else if (action.value == ACT_DRAW_TICKET)
         {
             size_t j = 1; 
             res.value.params.act.type = ACT_DRAW_TICKET;
             CITY_OPT city = find_city(tocens, &j, &i);
-            if(city.success == true)
+            if (city.success == true)
             { res.value.params.act.params.route.city1 = city.value; }
             else 
             {
+                for(int t = 0; t < i; ++t)
+                { free(tocens[t]); }
                 res.success = false;
                 return res;
             }
             city = find_city(tocens, &j, &i);
-            if(city.success == true)
+            if (city.success == true)
             { res.value.params.act.params.route.city2 = city.value; }
             else 
             {
+                for(int t = 0; t < i; ++t)
+                { free(tocens[t]); }
                 res.success = false;
                 return res;
             }
+            for(int t = 0; t < i; ++t)
+            { free(tocens[t]); }
+                
             return res;
         }
-        else if(action.value == ACT_CLAIN_ROUTE)
+        else if (action.value == ACT_CLAIN_ROUTE)
         {
             size_t j = 1; 
             res.value.params.act.type = ACT_CLAIN_ROUTE;
@@ -76,32 +93,46 @@ parse(char *s)
             { res.value.params.act.params.route.city1 = city.value; }
             else 
             {
+                for(int t = 0; t < i; ++t)
+                { free(tocens[t]); }
+                
                 res.success = false;
                 return res;
             }
             city = find_city(tocens, &j, &i);
-            if(city.success == true)
+            if (city.success == true)
             { res.value.params.act.params.route.city2 = city.value; }
             else 
             {
+                for(int t = 0; t < i; ++t)
+                { free(tocens[t]); }
                 res.success = false;
                 return res;
             }
             Color_OPT color = str2color(tocens[j]);
-            if(color.success == true)
+            if (color.success == true)
             { res.value.params.act.params.color = color.value; }
             else
             {
+                for(int t = 0; t < i; ++t)
+                { free(tocens[t]); }
                 res.success = false;
                 return res;
             }
+            for(int t = 0; t < i; ++t)
+            { free(tocens[t]); }  
             return res;
 
         }
+        for(int t = 0; t < i; ++t)
+        { free(tocens[t]); }
         res.success = false;
         return res;
     }
-    char* cmd_str = concat(tocens[0], tocens[1], ' ');
+    //char* cmd_str = concat(tocens[0], tocens[1], ' ');
+    char* cmd_str = strcat(tocens[0], " ");
+    cmd_str = strcat(cmd_str, tocens[0]);
+    
     CMD_OPT cmd = str2cmd(cmd_str);
     if(cmd.success == true && i == 3)
     {
@@ -111,8 +142,6 @@ parse(char *s)
     res.success = false;
     return res;
 }
-
-
 
 Color_OPT
 str2color(const char *str)
@@ -178,18 +207,6 @@ str2city(const char *str)
     return opt;
 }
 
-char*
-concat(const char *s1, const char *s2, const char c)
-{
-    const size_t len1 = strlen(s1);
-    const size_t len2 = strlen(s2);
-    char *result = malloc(len1 + len2 + 2);
-    memcpy(result, s1, len1);
-    result[len1] = c;
-    memcpy(result + len1 + 1, s2, len2 + 1);
-    return result;
-}
-
 CITY_OPT
 find_city(char** arr, size_t* i, size_t* size)
 {
@@ -209,9 +226,7 @@ find_city(char** arr, size_t* i, size_t* size)
         }
         ++j;
         ++position;
-        char* temp = concat(str, arr[position], '_');
-        str = temp;
-        temp = NULL;
+        str = strcat(str, arr[position]);
     }
     res = str2city(str);
     ++position;
