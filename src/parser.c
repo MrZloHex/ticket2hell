@@ -1,47 +1,49 @@
 #include "parser.h"
 
 Command_OPT
-Parser(char *s)
+Parse(char *s)
 {
-
     Command_OPT res = { .success = true };
-    char *pch = strtok (s," ");
+    char *pch = strtok(s," ");
     if(str2CMD(pch).success)
     {
         res.value.type = str2CMD(pch).value;
-        pch = strtok (NULL, " ");
+        pch = strtok(NULL, " ");
         res.value.params.name = pch;
-        printf("\n\nPARSER   --  %s\n\n", pch  );
+        printf("\n\nPARSER   --  %s\n\n", pch);
         return res;     
-    }else if(str2Actions(pch).success)
+    }
+    else if (str2Actions(pch).success)
     {
         res.value.params.act.type = str2Actions(pch).value;
-        if(res.value.params.act.type == ACT_DRAW_TRAIN)
+        if (res.value.params.act.type == ACT_DRAW_TRAIN)
         {
-            pch = strtok (NULL, " ");
+            pch = strtok(NULL, " ");
             if(str2Color(pch).success)
             { res.value.params.act.params.color = str2Color(pch).value; }
-        }else if(res.value.params.act.type == ACT_DRAW_TICKET)
+        }
+        else if (res.value.params.act.type == ACT_DRAW_TICKET)
         {
-            pch = strtok (NULL, " ");
-            if(str2City(pch).success)
+            pch = strtok(NULL, " ");
+            if (str2City(pch).success)
             { res.value.params.act.params.route.city1 = str2City(pch).value; }
             
-            pch = strtok (NULL, " ");
-            if(str2City(pch).success)
+            pch = strtok(NULL, " ");
+            if (str2City(pch).success)
             { res.value.params.act.params.route.city2 = str2City(pch).value; }
             return res;
-        }else if(res.value.params.act.type == ACT_CLAIN_ROUTE)
+        }
+        else if (res.value.params.act.type == ACT_CLAIN_ROUTE)
         {
-            pch = strtok (NULL, " ");
+            pch = strtok(NULL, " ");
             if(str2City(pch).success)
             { res.value.params.act.params.route.city1 = str2City(pch).value; }
             
-            pch = strtok (NULL, " ");
+            pch = strtok(NULL, " ");
             if(str2City(pch).success)
             { res.value.params.act.params.route.city2 = str2City(pch).value; }
 
-            pch = strtok (NULL, " ");
+            pch = strtok(NULL, " ");
             if(str2Color(pch).success)
             { res.value.params.act.params.color = str2Color(pch).value; }
             return res;   
@@ -53,11 +55,10 @@ Parser(char *s)
 }
 
 Color_OPT
-str2Color (const char *str)
+str2Color(const char *str)
 {
     Color_OPT opt = { .success = true };
-     int j;
-     for (j = 0;  j < sizeof (conversion_color) / sizeof (conversion_color[0]);  ++j)
+     for (size_t j = 0;  j < sizeof (conversion_color) / sizeof (conversion_color[0]);  ++j)
      {
          if (!strcmp (str, conversion_color[j].str))
              {
@@ -71,11 +72,10 @@ str2Color (const char *str)
 }
 
 CMD_OPT
-str2CMD (const char *str)
+str2CMD(const char *str)
 {
     CMD_OPT opt = { .success = true };
-     int j;
-     for (j = 0;  j < sizeof (conversion_cmd) / sizeof (conversion_cmd[0]);  ++j)
+     for (size_t j = 0;  j < sizeof (conversion_cmd) / sizeof (conversion_cmd[0]);  ++j)
      {
          if (!strcmp (str, conversion_cmd[j].str))
              {
@@ -89,11 +89,10 @@ str2CMD (const char *str)
 }
 
 ACTION_OPT
-str2Actions (const char *str)
+str2Actions(const char *str)
 {
     ACTION_OPT opt = { .success = true };
-     int j;
-     for (j = 0;  j < sizeof (conversion_actions) / sizeof (conversion_actions[0]);  ++j)
+     for (size_t j = 0;  j < sizeof (conversion_actions) / sizeof (conversion_actions[0]);  ++j)
      {
          if (!strcmp (str, conversion_actions[j].str))
              {
@@ -107,11 +106,10 @@ str2Actions (const char *str)
 }
 
 CITY_OPT
-str2City (const char *str)
+str2City(const char *str)
 {
     CITY_OPT opt = { .success = true };
-     int j;
-     for (j = 0;  j < sizeof (conversion_city) / sizeof (conversion_city[0]);  ++j)
+     for (size_t j = 0;  j < sizeof (conversion_city) / sizeof (conversion_city[0]);  ++j)
      {
          if (!strcmp (str, conversion_city[j].str))
              {
