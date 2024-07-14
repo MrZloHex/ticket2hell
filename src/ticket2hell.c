@@ -25,8 +25,8 @@ main(void)
 
     // game_deinit(&game);
     // ctrl_deinit(&ctrl);
-    tui_update(&tui);
+    // tui_update(&tui);
 
-    tui_deinit(&tui);
+    // tui_deinit(&tui);
     return 0;
 }

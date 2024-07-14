@@ -1,9 +1,11 @@
 #ifndef __TUI_H__
 #define __TUI_H__
 
+#include "ncurses.h"
+
 typedef struct TUI_S
 {
-
+    WINDOW *win;
 } TUI;
 
 void
