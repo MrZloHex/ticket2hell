@@ -4,11 +4,14 @@
 // #include "ncurses.h"
 #include "pool.h"
 #include "log.h"
+#include "deck.h"
 
 typedef struct TUI_S
 {
     WINDOW *pool;
     WINDOW *log;
+    WINDOW *card_deck;
+    WINDOW *train_deck;
 } TUI;
 
 void

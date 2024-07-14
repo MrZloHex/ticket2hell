@@ -21,6 +21,8 @@ tui_init(TUI *tui)
 
 	tui_pool_init(tui->pool);
 	tui_log_init(tui->log);
+	tui_deck_init(tui->card_deck, "TRAINS", 1);
+	tui_deck_init(tui->card_deck, "ROUTES", 2);
 
 
 	while((ch = getch()) != KEY_F(1))
