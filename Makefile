@@ -14,6 +14,7 @@ LIB = lib/map
 TST = test
 
 SOURCES = $(wildcard $(SRC)/*.c)
+# SOURCES += $(wildcard $(SRC)/*.c)
 LIBRARY = $(wildcard $(LIB)/*.c)
 OBJECTS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
 OBJECTS += $(patsubst $(LIB)/%.c, $(OBJ)/%.o, $(LIBRARY))

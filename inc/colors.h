@@ -17,17 +17,17 @@ const static uint8_t k_colors_esc[] =
 
 typedef enum Color_E
 {
-    COLOR_ROSE,
-    COLOR_WHITE,
-    COLOR_BLUE,
-    COLOR_YELLOW,
-    COLOR_ORANGE,
-    COLOR_BLACK,
-    COLOR_RED,
-    COLOR_GREEN,
-    COLORS_QUANTITY,
-    COLOR_ANY,
-    COLOR_UNKNOWN       // FOR TRAIN CARDS DRAWED IN CLOSED
+    CLR_ROSE,
+    CLR_WHITE,
+    CLR_BLUE,
+    CLR_YELLOW,
+    CLR_ORANGE,
+    CLR_BLACK,
+    CLR_RED,
+    CLR_GREEN,
+    CLRS_QUANTITY,
+    CLR_ANY,
+    CLR_UNKNOWN       // FOR TRAIN CARDS DRAWED IN CLOSED
 } Color;
 
 #endif /* __COLORS_H__ */

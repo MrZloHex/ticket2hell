@@ -12,7 +12,7 @@ const static size_t k_locomotive_quantity = 14;
 
 typedef struct Train_Deck_S
 {
-    size_t cards[COLORS_QUANTITY];
+    size_t cards[CLRS_QUANTITY];
     size_t locomotives;
     size_t q_cards;
 

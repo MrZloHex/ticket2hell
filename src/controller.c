@@ -13,16 +13,16 @@ get_color(int key)
 {
     switch (key)
     {
-        case 's': return COLOR_ROSE;
-        case 'w': return COLOR_WHITE;
-        case 'l': return COLOR_BLUE;
-        case 'y': return COLOR_YELLOW;
-        case 'o': return COLOR_ORANGE;
-        case 'b': return COLOR_BLACK;
-        case 'r': return COLOR_RED;
-        case 'g': return COLOR_GREEN;
-        case 'a': return COLOR_ANY;
-        default: return COLOR_UNKNOWN;
+        case 's': return CLR_ROSE;
+        case 'w': return CLR_WHITE;
+        case 'l': return CLR_BLUE;
+        case 'y': return CLR_YELLOW;
+        case 'o': return CLR_ORANGE;
+        case 'b': return CLR_BLACK;
+        case 'r': return CLR_RED;
+        case 'g': return CLR_GREEN;
+        case 'a': return CLR_ANY;
+        default: return CLR_UNKNOWN;
     }
 }
 
