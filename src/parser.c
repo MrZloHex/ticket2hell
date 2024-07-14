@@ -199,7 +199,7 @@ find_city(char** arr, size_t* i, size_t* size)
     size_t size_arr = *size;
     char* str = arr[position];
 
-    while (size_arr - position > 2 && j < 3)
+    while (size_arr - position > 1 && j < 3)
     {
         res = str2city(str);
         if(res.success == true)
@@ -214,5 +214,7 @@ find_city(char** arr, size_t* i, size_t* size)
         temp = NULL;
     }
     res = str2city(str);
+    ++position;
+
     return res;    
 }
