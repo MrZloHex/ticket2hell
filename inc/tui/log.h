@@ -1,7 +1,7 @@
 #ifndef __TUI_LOG_H__
 #define __TUI_LOG_H__
 
-#include "windows.h"
+#include "tui/windows.h"
 
 void
 tui_log_init(WINDOW *log);

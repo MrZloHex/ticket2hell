@@ -2,9 +2,9 @@
 #define __TUI_H__
 
 // #include "ncurses.h"
-#include "pool.h"
-#include "log.h"
-#include "deck.h"
+#include "tui/pool.h"
+#include "tui/log.h"
+#include "tui/deck.h"
 
 typedef struct TUI_S
 {

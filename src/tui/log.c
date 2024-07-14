@@ -1,4 +1,4 @@
-#include "log.h"
+#include "tui/log.h"
 
 void
 tui_log_init(WINDOW *log)

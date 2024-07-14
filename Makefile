@@ -7,15 +7,16 @@ LDFLAGS = -lncurses -ltinfo
 
 TARGET = ticket2hell
 
-SRC = src
-OBJ = obj
-BIN = bin
-LIB = lib/map
-TST = test
+SRC  = src
+SRCS = src src/tui
+OBJ  = obj
+BIN  = bin
+LIB  = lib/map
+TST  = test
 
-SOURCES = $(wildcard $(SRC)/*.c)
-# SOURCES += $(wildcard $(SRC)/*.c)
+SOURCES = $(foreach dir, $(SRCS), $(wildcard $(dir)/*.c))
 LIBRARY = $(wildcard $(LIB)/*.c)
+
 OBJECTS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
 OBJECTS += $(patsubst $(LIB)/%.c, $(OBJ)/%.o, $(LIBRARY))
 
@@ -23,9 +24,9 @@ TESTS = $(wildcard $(TST)/*.s)
 TEST_RES = $(patsubst $(TST)/%.s, $(BIN)/%.bin, $(TESTS))
 TEST_CHK = $(wildcard $(TST)/*.bin)
 
-all: clean compile run
+all: run
 
-run: clean compile
+run: compile
 	./$(BIN)/$(TARGET)
 
 compile: clean binary
@@ -48,7 +49,7 @@ $(TST)/%.bin: $(BIN)/%.bin
 $(BIN)/%.bin: $(TST)/%.s
 	$(BIN)/$(TARGET) -i $< -o $@
 
-
 clean:
+	-mkdir obj obj/tui bin
 	-rm $(BIN)/*
 	-rm $(OBJECTS)

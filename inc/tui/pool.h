@@ -1,7 +1,7 @@
 #ifndef __TUI_POOL_H__
 #define __TUI_POOL_H__
 
-#include "windows.h"
+#include "tui/windows.h"
 
 void
 tui_pool_init(WINDOW *pool_win);
