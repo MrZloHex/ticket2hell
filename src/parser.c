@@ -1,21 +1,25 @@
 #include "parser.h"
 
 Command_OPT
-Parse(char *s)
+parse(char *s)
 {
     Command_OPT res = { .success = true };
-    char *pch = strtok(s," ");
-    if(str2CMD(pch).success)
+    char *cmd = strtok(s, " ");
+
+    char *pch;
+    
+    // REFACTOR for  all xx2xx function delete one call
+    if (str2cmd(cmd).success)
     {
-        res.value.type = str2CMD(pch).value;
-        pch = strtok(NULL, " ");
-        res.value.params.name = pch;
-        printf("\n\nPARSER   --  %s\n\n", pch);
-        return res;     
+        res.value.type = str2cmd(cmd).value;
+        char *name = strtok(NULL, " ");
+        res.value.params.name = name;
+        printf("\n\nPARSER  ADD PLAYER --  %s\n\n", name);
+        return res;
     }
-    else if (str2Actions(pch).success)
+    else if (str2action(cmd).success)
     {
-        res.value.params.act.type = str2Actions(pch).value;
+        res.value.params.act.type = str2action(cmd).value;
         if (res.value.params.act.type == ACT_DRAW_TRAIN)
         {
             pch = strtok(NULL, " ");
@@ -72,20 +76,21 @@ str2Color(const char *str)
 }
 
 CMD_OPT
-str2CMD(const char *str)
+str2cmd(const char *str)
 {
     CMD_OPT opt = { .success = true };
-     for (size_t j = 0;  j < sizeof (conversion_cmd) / sizeof (conversion_cmd[0]);  ++j)
-     {
-         if (!strcmp (str, conversion_cmd[j].str))
-             {
-                opt.value = conversion_cmd[j].val; 
-                return opt;   
-             }
-     }
 
-     opt.success = false;
-     return opt;
+    for (size_t i = 0; i < cmd_quantity; ++i)
+    {
+        if (strcmp(str, conversion_cmd[i].str) == 0)
+        {
+            opt.value = conversion_cmd[i].val; 
+            return opt;   
+        }
+    }
+
+    opt.success = false;
+    return opt;
 }
 
 ACTION_OPT

@@ -16,18 +16,18 @@ const static struct {
     CMD_Type    val;
     const char *str;
 } conversion_cmd [] = {
-    {CMD_ADD_PLAYER, "CMD_ADD_PLAYER"},
-    {CMD_SET_FIRST, "CMD_SET_FIRST"},
-    {CMD_ACTION, "CMD_ACTION"},
+    {CMD_ADD_PLAYER, "add player"},
+    {CMD_SET_FIRST, "set first"},
 };
+const static size_t cmd_quantity = sizeof(conversion_cmd) / sizeof(conversion_cmd[0]);
 
 const static struct {
     Action_Type val;
     const char *str;
 } conversion_actions [] = {
-    {ACT_DRAW_TRAIN, "ACT_DRAW_TRAIN"},
-    {ACT_DRAW_TICKET, "ACT_DRAW_TICKET"},
-    {ACT_CLAIN_ROUTE, "ACT_CLAIN_ROUTE"},
+    {ACT_DRAW_TRAIN, "train"},
+    {ACT_DRAW_TICKET, "ticket"},
+    {ACT_CLAIN_ROUTE, "claim"},
 };
 
 const static struct {
@@ -91,17 +91,18 @@ const static struct {
 };
 
 DEFINE_OPTION(Command, Command_OPT);
-Command_OPT
-Parse(char* s);
-
+DEFINE_OPTION(CMD_Type, CMD_OPT);
 DEFINE_OPTION(Color, Color_OPT);
+
+Command_OPT
+parse(char* s);
+
 Color_OPT
 str2Color(const char *str);
 
 
-DEFINE_OPTION(CMD_Type, CMD_OPT);
 CMD_OPT
-str2CMD(const char *str);
+str2cmd(const char *str);
 
 DEFINE_OPTION(Action_Type, ACTION_OPT);
 ACTION_OPT
