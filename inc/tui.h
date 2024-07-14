@@ -3,10 +3,12 @@
 
 // #include "ncurses.h"
 #include "pool.h"
+#include "log.h"
 
 typedef struct TUI_S
 {
     WINDOW *pool;
+    WINDOW *log;
 } TUI;
 
 void

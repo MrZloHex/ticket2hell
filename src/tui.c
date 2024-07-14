@@ -20,6 +20,7 @@ tui_init(TUI *tui)
 	refresh();
 
 	tui_pool_init(tui->pool);
+	tui_log_init(tui->log);
 
 
 	while((ch = getch()) != KEY_F(1))

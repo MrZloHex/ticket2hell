@@ -4,7 +4,7 @@
 void
 tui_pool_init(WINDOW *pool_win)
 {
-	pool_win = create_newwin(7, 20, 20, 20);
+	pool_win = create_newwin(7, 20, 3, 50);
 
 	init_pair(1, COLOR_BLACK, COLOR_BLUE);	
 	init_pair(2, COLOR_WHITE, COLOR_RED);	
