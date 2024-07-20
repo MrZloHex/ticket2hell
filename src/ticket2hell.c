@@ -9,18 +9,17 @@ main(void)
     Game game;
     Controller ctrl;
 
-    // game_init(&game, 2);
+    game_init(&game, 2);
     ctrl_init(&ctrl);
-    while(1) {}
 
     // printf("TICKET TO HELL!!!!\n");
 
-    // bool stop = false;
-    // while (!stop)
-    // {
-    //     stop = ctrl_update(&ctrl, &game);
-    //     // stop = game_update(&game);
-    // }
+    bool stop = false;
+    while (!stop)
+    {
+        stop = ctrl_update(&ctrl, &game);
+        // stop = game_update(&game);
+    }
 
     // game_deinit(&game);
     ctrl_deinit(&ctrl);

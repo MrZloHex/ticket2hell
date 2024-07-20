@@ -4,7 +4,6 @@ void
 tui_cmd_init(WINDOW **cmd)
 {
     *cmd = newwin(3, COLS-50, LINES-6, 50);
-    keypad(*cmd, TRUE);
 	
     box(*cmd, 0, 0);
     wrefresh(*cmd);
@@ -19,13 +18,16 @@ tui_cmd_init(WINDOW **cmd)
 	init_pair(4, COLOR_BLACK, COLOR_YELLOW);	
 	init_pair(5, COLOR_BLACK, COLOR_GREEN);	
 
-    mvwprintw(*cmd, 1, 3, "anya > ");
+    mvwprintw(*cmd, 1, 3, "anya >");
 	wrefresh(*cmd);
 }
 
 int
 tui_cmd_get(WINDOW **cmd)
 {
+	mvwprintw(*cmd, 1, 9, " ");
+	wrefresh(*cmd);
+
 	curs_set(1);
 	size_t i = 0;
 	char comm[64];
@@ -38,7 +40,4 @@ tui_cmd_get(WINDOW **cmd)
 	}
 	comm[i] = 0;
 	curs_set(0);
-
-
-	
 }

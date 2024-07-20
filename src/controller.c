@@ -7,6 +7,7 @@ ctrl_init(Controller *ctrl)
 {
     // parser_init(&(ctrl->parser));
     tui_init(&(ctrl->tui));
+
 }
 
 Color
@@ -37,12 +38,16 @@ ctrl_update(Controller *ctrl, Game *game)
 
     Command cmd;
     char name[10];
-
     // tui_update(&(ctrl->tui));
+
 	int key = tui_get_char(&(ctrl->tui));
     if (key == KEY_F(1))
     {
         return true;
+    }
+    else if (key == ':')
+    {
+        tui_cmd_get(&(ctrl->tui.cmd));
     }
     else if (key == 'c')
     {
@@ -79,6 +84,7 @@ ctrl_update(Controller *ctrl, Game *game)
     // }
     
     // ctrl_execute_cmd(ctrl, game, cmd);
+    return false;
 }
 
 void

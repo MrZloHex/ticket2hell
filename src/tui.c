@@ -25,9 +25,6 @@ tui_init(TUI *tui)
 	// tui_player_init(tui->player[0], "ANYA", 0);
 	// tui_player_init(tui->player[1], "ALEX", 1);
 	tui_cmd_init(&(tui->cmd));
-	
-	tui_cmd_get(&(tui->cmd));
-	// tui_cmd_update(&(tui->cmd), 'a');
 }
 
 
@@ -39,9 +36,8 @@ tui_update(TUI *tui)
 int
 tui_get_char(TUI *tui)
 {
-	int ch = wgetch(tui->cmd);
-	// tui_cmd_update(tui->cmd, ch);
-	return ch;
+	refresh();
+	return getch();
 }
 
 void

@@ -3,7 +3,7 @@ CFLAGS =  -O0 -Wall -Wextra -Wpedantic -std=c2x -Wstrict-aliasing
 CFLAGS += -Wno-old-style-declaration -Wno-implicit-fallthroug -Wno-unused-result
 CFLAGS += -Iinc -Ilib
 
-LDFLAGS = -lncurses -ltinfo -lpanel
+LDFLAGS = -lncurses -ltinfo
 
 TARGET = ticket2hell
 
