@@ -4,17 +4,19 @@
 #include "actions.h"
 #include "parser.h"
 #include "game.h"
+#include "tui.h"
 
 
 typedef struct Controller_S
 {
     Parser parser;
+    TUI tui;
 } Controller;
 
 void
 ctrl_init(Controller *ctrl);
 
-void
+bool
 ctrl_update(Controller *ctrl, Game *game);
 
 void

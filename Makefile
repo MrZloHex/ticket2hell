@@ -3,7 +3,7 @@ CFLAGS =  -O0 -Wall -Wextra -Wpedantic -std=c2x -Wstrict-aliasing
 CFLAGS += -Wno-old-style-declaration -Wno-implicit-fallthroug -Wno-unused-result
 CFLAGS += -Iinc -Ilib
 
-LDFLAGS = -lncurses -ltinfo
+LDFLAGS = -lncurses -ltinfo -lpanel
 
 TARGET = ticket2hell
 
@@ -20,9 +20,10 @@ LIBRARY = $(wildcard $(LIB)/*.c)
 OBJECTS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
 OBJECTS += $(patsubst $(LIB)/%.c, $(OBJ)/%.o, $(LIBRARY))
 
-TESTS = $(wildcard $(TST)/*.s)
-TEST_RES = $(patsubst $(TST)/%.s, $(BIN)/%.bin, $(TESTS))
-TEST_CHK = $(wildcard $(TST)/*.bin)
+TEST = ntest.c
+TEST_TAR = ntest
+# TEST_RES = $(patsubst $(TST)/%.s, $(BIN)/%.bin, $(TESTS))
+# TEST_CHK = $(wildcard $(TST)/*.bin)
 
 all: run
 
@@ -30,7 +31,7 @@ run: compile
 	./$(BIN)/$(TARGET)
 
 compile: clean binary
-test: compile tests
+
 
 binary: $(OBJECTS)
 	$(CC) -o $(BIN)/$(TARGET) $^ $(LDFLAGS)
@@ -53,3 +54,12 @@ clean:
 	-mkdir obj obj/tui bin
 	-rm $(BIN)/*
 	-rm $(OBJECTS)
+
+
+test: test_run
+
+test_run: test_compile
+	./$(TST)/$(TEST_TAR)
+
+test_compile: $(TST)/$(TEST)
+	$(CC) -o $(TST)/$(TEST_TAR) $(TST)/$(TEST) $(CFLAGS) $(LDFLAGS)

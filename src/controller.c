@@ -6,6 +6,7 @@ void
 ctrl_init(Controller *ctrl)
 {
     // parser_init(&(ctrl->parser));
+    tui_init(&(ctrl->tui));
 }
 
 Color
@@ -26,52 +27,58 @@ get_color(int key)
     }
 }
 
-void
+bool
 ctrl_update(Controller *ctrl, Game *game)
 {
     // char input[64];
     // scanf("%s", input);
     // Command cmd = parser_parse(&(ctrl->parser), input);
 
+
     Command cmd;
     char name[10];
-    int key = getchar();
-    if (key == 'c')
+
+    // tui_update(&(ctrl->tui));
+	int key = tui_get_char(&(ctrl->tui));
+    if (key == KEY_F(1))
     {
-        int color = getchar();
-        getchar();
+        return true;
+    }
+    else if (key == 'c')
+    {
+        int color = getch();
         cmd.type = CMD_ACTION;
         cmd.params.act.type = ACT_DRAW_TRAIN;
         cmd.params.act.params.color = get_color(color);
     }
-    else if (key == 'a')
-    {
-        scanf("%s", name);
-        cmd.type = CMD_ADD_PLAYER;
-        cmd.params.name = name;
-    }
-    else if (key == 's')
-    {
-        scanf("%s", name);
-        cmd.type = CMD_SET_FIRST;
-        cmd.params.name = name;
-    }
-    else if (key == ' ')
-    {
-        getchar();
-        game->game_started = true;
-        return;
-    }
-    else if (key == 27)
-    {
-        exit(0);
-    }
-    else
-    {
-        return;
-    }
+    // else if (key == 'a')
+    // {
+    //     scanf("%s", name);
+    //     cmd.type = CMD_ADD_PLAYER;
+    //     cmd.params.name = name;
+    // }
+    // else if (key == 's')
+    // {
+    //     scanf("%s", name);
+    //     cmd.type = CMD_SET_FIRST;
+    //     cmd.params.name = name;
+    // }
+    // else if (key == ' ')
+    // {
+    //     getchar();
+    //     game->game_started = true;
+    //     return;
+    // }
+    // else if (key == 27)
+    // {
+    //     exit(0);
+    // }
+    // else
+    // {
+    //     return;
+    // }
     
-    ctrl_execute_cmd(ctrl, game, cmd);
+    // ctrl_execute_cmd(ctrl, game, cmd);
 }
 
 void
@@ -96,5 +103,6 @@ ctrl_execute_cmd(Controller *ctrl, Game *game, Command cmd)
 void
 ctrl_deinit(Controller *ctrl)
 {
+    tui_deinit(&(ctrl->tui));
     // parser_deinit(&(ctrl->parser));
 }

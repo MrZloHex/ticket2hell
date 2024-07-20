@@ -1,7 +1,6 @@
 #ifndef __TUI_H__
 #define __TUI_H__
 
-// #include "ncurses.h"
 #include "tui/pool.h"
 #include "tui/log.h"
 #include "tui/deck.h"
@@ -21,6 +20,9 @@ typedef struct TUI_S
 
 void
 tui_init(TUI *tui);
+
+int
+tui_get_char(TUI *tui);
 
 void
 tui_update(TUI *tui);

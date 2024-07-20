@@ -8,25 +8,22 @@ main(void)
 {
     Game game;
     Controller ctrl;
-    TUI tui;
-    tui_init(&tui);
 
     // game_init(&game, 2);
-    // ctrl_init(&ctrl);
+    ctrl_init(&ctrl);
+    while(1) {}
 
     // printf("TICKET TO HELL!!!!\n");
 
     // bool stop = false;
     // while (!stop)
     // {
-    //     ctrl_update(&ctrl, &game);
-    //     stop = game_update(&game);
+    //     stop = ctrl_update(&ctrl, &game);
+    //     // stop = game_update(&game);
     // }
 
     // game_deinit(&game);
-    // ctrl_deinit(&ctrl);
-    // tui_update(&tui);
+    ctrl_deinit(&ctrl);
 
-    // tui_deinit(&tui);
     return 0;
 }
