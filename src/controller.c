@@ -47,7 +47,10 @@ ctrl_update(Controller *ctrl, Game *game)
     }
     else if (key == ':')
     {
-        tui_cmd_get(&(ctrl->tui.cmd));
+        char *cmd = tui_cmd_get(&(ctrl->tui.cmd));
+        mvprintw(1, 1, "`%s`", cmd);
+        refresh();
+        free(cmd);
     }
     else if (key == 'c')
     {

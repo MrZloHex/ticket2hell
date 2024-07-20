@@ -7,7 +7,7 @@ void
 tui_cmd_init(WINDOW **cmd);
 
 
-int
+char *
 tui_cmd_get(WINDOW **cmd);
 
 #endif /* __TUI_CMD_H__ */

@@ -24,81 +24,101 @@
 // 	delwin(local_win);
 // }
 
-typedef WINDOW *WIN;
+// typedef WINDOW *WIN;
 
-typedef struct
+// typedef struct
+// {
+//     WIN win;
+//     WIN v;
+// } CTRL;
+
+// void
+// c_n(CTRL *c)
+// {
+//     // c->win = create_newwin(10, 10, 10, 10);
+//     _n(&(c->win));
+// }
+
+// void
+// _n(WIN *w)
+// {
+//     *w = newwin(10, 10, 10, 10);
+//     keypad(*w, TRUE);
+//     box(*w, 0, 0);
+//     refresh();
+//     wrefresh(*w);
+
+// }
+
+// void
+// c_p(CTRL *c, int k)
+// {
+//     _p(&(c->win), k);
+// }
+
+// void
+// _p(WIN *w, int k)
+// {
+//     mvwprintw(*w, 1, 1, "%c", (char)k);
+//     wrefresh(*w);
+// }
+
+// int
+// c_g(CTRL *c)
+// {
+//     return wgetch(c->win);
+// }
+
+// void
+// c_d(CTRL *c)
+// {
+//     delwin(c->win);
+// }
+
+// int
+// main(void)
+// {
+
+	// initscr();
+	// cbreak();
+	// keypad(stdscr, TRUE);
+	// start_color();
+	// noecho();
+    // // curs_set(0);
+
+    // CTRL c;
+    // c_n(&c);
+
+    // // c_p(&c);
+
+    // int key;
+    // while((key = c_g(&c)) != KEY_F(1))
+    // {
+    //     c_p(&c, key);
+    // }
+
+    // c_d(&c);
+    // // delwin(win);
+    // endwin();
+    // return 0;
+// }
+
+
+#include <stdio.h>
+#include <ncurses.h>
+#include <locale.h>
+#include <wchar.h>
+
+int main()
 {
-    WIN win;
-    WIN v;
-} CTRL;
-
-void
-c_n(CTRL *c)
-{
-    // c->win = create_newwin(10, 10, 10, 10);
-    _n(&(c->win));
-}
-
-void
-_n(WIN *w)
-{
-    *w = newwin(10, 10, 10, 10);
-    keypad(*w, TRUE);
-    box(*w, 0, 0);
-    refresh();
-    wrefresh(*w);
-
-}
-
-void
-c_p(CTRL *c, int k)
-{
-    _p(&(c->win), k);
-}
-
-void
-_p(WIN *w, int k)
-{
-    mvwprintw(*w, 1, 1, "%c", (char)k);
-    wrefresh(*w);
-}
-
-int
-c_g(CTRL *c)
-{
-    return wgetch(c->win);
-}
-
-void
-c_d(CTRL *c)
-{
-    delwin(c->win);
-}
-
-int
-main(void)
-{
-
-	initscr();
-	cbreak();
-	keypad(stdscr, TRUE);
-	start_color();
-	noecho();
-    // curs_set(0);
-
-    CTRL c;
-    c_n(&c);
-
-    // c_p(&c);
-
-    int key;
-    while((key = c_g(&c)) != KEY_F(1))
+    initscr(); cbreak(); noecho(); keypad(stdscr, TRUE);
+    while (1)
     {
-        c_p(&c, key);
+        
+    int c = getch();
+    printw("Keycode: %d\n", c);
+    // getch();
     }
-
-    c_d(&c);
-    // delwin(win);
     endwin();
     return 0;
 }

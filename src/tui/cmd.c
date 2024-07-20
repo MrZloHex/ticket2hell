@@ -1,4 +1,6 @@
 #include "tui/cmd.h"
+#include "stdlib.h"
+#include "string.h"
 
 void
 tui_cmd_init(WINDOW **cmd)
@@ -22,7 +24,14 @@ tui_cmd_init(WINDOW **cmd)
 	wrefresh(*cmd);
 }
 
-int
+void
+tui_cmd_clear(WINDOW **cmd)
+{
+	mvwprintw(*cmd, 1, 9, "                              ");
+	wrefresh(*cmd);
+}
+
+char *
 tui_cmd_get(WINDOW **cmd)
 {
 	mvwprintw(*cmd, 1, 9, " ");
@@ -31,13 +40,39 @@ tui_cmd_get(WINDOW **cmd)
 	curs_set(1);
 	size_t i = 0;
 	char comm[64];
-	char c;
-	while((c = (char)wgetch(*cmd)) != '\n')
+	int c;
+	while((c = wgetch(*cmd)) != '\n')
 	{
-		mvwprintw(*cmd, 1, 10+i, "%c", c);
+		if (c == 27)
+		{
+			curs_set(0);
+			tui_cmd_clear(cmd);
+			return 1; 
+		}
+		
+		if (c == 127)
+		{
+			c = ' ';
+        	mvwprintw(*cmd, 1, 9+i, "%c", c);
+			i -= 1;
+			wmove(*cmd, 1, 10+i);
+		}
+		else
+		{
+			comm[i++] = c;
+        	mvwprintw(*cmd, 1, 9+i, "%c", c);
+		}
+
 		wrefresh(*cmd);
-		comm[i++] = c;
 	}
 	comm[i] = 0;
 	curs_set(0);
+
+	tui_cmd_clear(cmd);
+
+	char *res = (char *)malloc(strlen(comm)+1);
+	strcpy(res, comm);
+
+	return res;
+	
 }
