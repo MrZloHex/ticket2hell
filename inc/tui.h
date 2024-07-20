@@ -6,6 +6,8 @@
 #include "tui/log.h"
 #include "tui/deck.h"
 #include "tui/cmd.h"
+#include "tui/player.h"
+#include "players.h"
 
 typedef struct TUI_S
 {
@@ -14,6 +16,7 @@ typedef struct TUI_S
     WINDOW *card_deck;
     WINDOW *train_deck;
     WINDOW *cmd;
+    WINDOW *player[MAX_PLAYERS];
 } TUI;
 
 void

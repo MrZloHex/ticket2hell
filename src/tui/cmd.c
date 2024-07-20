@@ -3,7 +3,7 @@
 void
 tui_cmd_init(WINDOW *cmd)
 {
-	cmd = create_newwin(3, COLS-60, LINES-6, 50);
+	cmd = create_newwin(3, COLS-50, LINES-6, 50);
 	mvwprintw(cmd, 0, 2, "CMD");
     size_t win_y, win_x;
     getmaxyx(cmd, win_y, win_x);

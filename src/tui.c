@@ -9,7 +9,7 @@ tui_init(TUI *tui)
 	int ch;
 
 	initscr();			/* Start curses mode 		*/
-	cbreak();			/* Line buffering disabled, Pass on
+	raw();			/* Line buffering disabled, Pass on
 					//  * everty thing to me 		*/
 	keypad(stdscr, TRUE);		/* I need that nifty F1 	*/
 	start_color();
@@ -24,7 +24,8 @@ tui_init(TUI *tui)
 	tui_deck_init(tui->card_deck, "TRAINS", 1);
 	tui_deck_init(tui->card_deck, "ROUTES", 2);
 	tui_cmd_init(tui->cmd);
-
+	tui_player_init(tui->player[0], "ANYA", 0);
+	tui_player_init(tui->player[1], "ALEX", 1);
 
 	while((ch = getch()) != KEY_F(1))
 	{
