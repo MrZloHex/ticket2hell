@@ -1,4 +1,4 @@
-#include "tui/windows.h"
+#include "ncurses.h"
 
 
 WINDOW *

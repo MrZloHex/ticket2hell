@@ -18,12 +18,12 @@ tui_init(TUI *tui)
 	printw("Press F1 to exit");
 	refresh();
 
-	// tui_pool_init(tui->pool);
-	// tui_log_init(tui->log);
-	// tui_deck_init(tui->card_deck, "TRAINS", 1);
-	// tui_deck_init(tui->card_deck, "ROUTES", 2);
-	// tui_player_init(tui->player[0], "ANYA", 0);
-	// tui_player_init(tui->player[1], "ALEX", 1);
+	tui_pool_init(&(tui->pool));
+	tui_log_init(&(tui->log));
+	tui_deck_init(&(tui->card_deck), "TRAINS", 1);
+	tui_deck_init(&(tui->card_deck), "ROUTES", 2);
+	tui_player_init(&(tui->player[0]), "ANYA", 0);
+	tui_player_init(&(tui->player[1]), "ALEX", 1);
 	tui_cmd_init(&(tui->cmd));
 }
 

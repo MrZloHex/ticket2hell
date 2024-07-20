@@ -1,14 +1,18 @@
 #include "tui/log.h"
 
 void
-tui_log_init(WINDOW *log)
+tui_log_init(WINDOW **log)
 {
     // LINES
     // COLS
-	log = create_newwin(LINES - 6, 40, 3, 5);
-	mvwprintw(log, 0, 2, "LOG");
+	*log = newwin(LINES - 6, 40, 3, 5);
+
+    box(*log, 0, 0);
+    wrefresh(*log);
+
+	mvwprintw(*log, 0, 2, "LOG");
     size_t win_y, win_x;
-    getmaxyx(log, win_y, win_x);
+    getmaxyx(*log, win_y, win_x);
 
 	init_pair(1, COLOR_BLACK, COLOR_BLUE);	
 	init_pair(2, COLOR_WHITE, COLOR_RED);	
@@ -16,21 +20,21 @@ tui_log_init(WINDOW *log)
 	init_pair(4, COLOR_BLACK, COLOR_YELLOW);	
 	init_pair(5, COLOR_BLACK, COLOR_GREEN);	
 
-    mvwprintw(log, win_y - 3, 3, "anya > ");
+    mvwprintw(*log, win_y - 3, 3, "anya > ");
 
-    mvwprintw(log, win_y - 3, 11, "DRAW TRAIN CARD ");
-    wattron(log, COLOR_PAIR(4));
-    mvwprintw(log, win_y - 3, 28, " TR ");
-    wattroff(log, COLOR_PAIR(4));
+    mvwprintw(*log, win_y - 3, 11, "DRAW TRAIN CARD ");
+    wattron(*log, COLOR_PAIR(4));
+    mvwprintw(*log, win_y - 3, 28, " TR ");
+    wattroff(*log, COLOR_PAIR(4));
 
-    mvwprintw(log, win_y - 4, 3, "alex > ");
+    mvwprintw(*log, win_y - 4, 3, "alex > ");
 
-    mvwprintw(log, win_y - 4, 11, "DRAW TRAIN CARD ");
-    wattron(log, COLOR_PAIR(5));
-    mvwprintw(log, win_y - 4, 28, " TR ");
-    wattroff(log, COLOR_PAIR(5));
+    mvwprintw(*log, win_y - 4, 11, "DRAW TRAIN CARD ");
+    wattron(*log, COLOR_PAIR(5));
+    mvwprintw(*log, win_y - 4, 28, " TR ");
+    wattroff(*log, COLOR_PAIR(5));
 
 
-	wattroff(log, COLOR_PAIR(5));
-	wrefresh(log);
+	wattroff(*log, COLOR_PAIR(5));
+	wrefresh(*log);
 }

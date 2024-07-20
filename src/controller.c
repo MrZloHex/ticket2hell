@@ -51,10 +51,10 @@ ctrl_update(Controller *ctrl, Game *game)
     }
     else if (key == 'c')
     {
-        int color = getch();
-        cmd.type = CMD_ACTION;
-        cmd.params.act.type = ACT_DRAW_TRAIN;
-        cmd.params.act.params.color = get_color(color);
+        // int color = getch();
+        // cmd.type = CMD_ACTION;
+        // cmd.params.act.type = ACT_DRAW_TRAIN;
+        // cmd.params.act.params.color = get_color(color);
     }
     // else if (key == 'a')
     // {
