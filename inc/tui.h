@@ -5,6 +5,7 @@
 #include "tui/pool.h"
 #include "tui/log.h"
 #include "tui/deck.h"
+#include "tui/cmd.h"
 
 typedef struct TUI_S
 {
@@ -12,6 +13,7 @@ typedef struct TUI_S
     WINDOW *log;
     WINDOW *card_deck;
     WINDOW *train_deck;
+    WINDOW *cmd;
 } TUI;
 
 void

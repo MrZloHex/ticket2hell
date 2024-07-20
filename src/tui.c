@@ -23,6 +23,7 @@ tui_init(TUI *tui)
 	tui_log_init(tui->log);
 	tui_deck_init(tui->card_deck, "TRAINS", 1);
 	tui_deck_init(tui->card_deck, "ROUTES", 2);
+	tui_cmd_init(tui->cmd);
 
 
 	while((ch = getch()) != KEY_F(1))
